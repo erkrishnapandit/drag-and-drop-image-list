@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>D&D Image To Do List</title>
+</head>
+
+<body>
+
+    <div class="carousel">
+        <h2>Upload Image Here</h2>
+        <div class="carousel-items" id="dropzone">
+            <!-- Define you carousel here -->
+            <img src="./cloudIcon.png" alt="cloudIcon">
+            <input type="file" accept="image/*" id="fileInput" hidden>
+            <p>Drag and Drop or Click Here To Upload Image</p>
+        </div>
+    </div>
+
+    <div class="app-container">
+
+        <div id="preview-container" style="display: none">
+            
+            <!-- Define your rest of the things of the Image TODO List app here -->
+             <div class="file-name">
+                <img src="" alt="thumbnail" id="preview-image" class="thumbnail">
+                <input type="text" id="image-comment" placeholder="Add Comment Here">
+                <button class="btn" id="add-button"> Add</button>
+                <button class="btn" id="cancel-button"> Cancel</button>
+             </div>
+        </div>
+
+        <div class="file-list" id="fileList">
+            <!-- Create the space here where your uploaded image will be visible -->
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

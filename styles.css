@@ -1,0 +1,97 @@
+/* Write your desired css here */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+/* ##################  Dropzone Styling ###############*/
+.carousel{
+    border:1px solid black;
+    border-radius: 20px;
+    margin-bottom:20px;
+}
+
+h2{
+    text-align: center;
+    padding: 10px;
+}
+
+.carousel-items{
+    border: 2px dashed gray;
+    padding:20px;
+    border-radius:20px;
+    margin:20px;
+    margin-top: 5px;
+    cursor:pointer;
+    text-align: center;
+}
+
+.carousel-items img{
+    width: 6em;
+    height: 6em;
+    padding: 5px;
+}
+
+.carousel-items p{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ################## Preview Image Styling ################### */
+
+.app-container{
+    text-align: center;
+}
+
+#preview-container{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.file-name{
+    border: 1px solid black;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    background: #fff;
+}
+
+.thumbnail{
+    max-width: 80px;
+    margin-right: 10px;
+}
+
+#image-comment{
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.btn{
+    padding: 10px;
+    margin: 5px;
+}
+
+/* #fileList{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */
+
+.comment-text{
+    flex-grow: 1;
+}
