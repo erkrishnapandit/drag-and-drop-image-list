@@ -58,12 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
       selectedFile = file[0];
       const reader = new FileReader();
       reader.onload = function (e) {
+        imageComment.value = "";
         previewImage.src = e.target.result;
         previewContainer.style.display = "block";
       }
       reader.readAsDataURL(selectedFile);
     } else {
-      alert(`You Can't upload more than ${MAX_IMAGES} items`);
+      alert(`You Can't upload more than ${MAX_IMAGES} images`);
     }
   }
 
@@ -90,41 +91,55 @@ document.addEventListener("DOMContentLoaded", function () {
       deleteButton.textContent = "Delete";
       deleteButton.addEventListener("click", () => {
         div.remove();
+        saveToLocalStorage();
       });
       div.appendChild(deleteButton);
       fileList.appendChild(div);
+      saveToLocalStorage();
     };
     reader.readAsDataURL(file);
   }
 
   // functionality to save data in the local storage
-  function saveInLocalStorage() {
+  function saveToLocalStorage() {
     const imageData = [];
     fileList.querySelectorAll(".file-name").forEach((item) => {
-      const image = item.querySelector("img");
-      const span = item.querySelector("span");
+      const image = item.querySelector('img');
+      const text = item.querySelector('span');
+      imageData.push({ src: image.src, comment: text.textContent });
     });
-    imageData.push({src: img.src,comment: span.textContent});
-    localStorage.setItem('ImageData', JSON.stringify(imageData));
+    localStorage.setItem('storedImageData', JSON.stringify(imageData));
   }
 
 
   //Function to load the data from localStorage
   function loadFromLocalStorage() {
     const storedImagesData = JSON.parse(
-      localStorage.getItem("storedImagesData") || "[]"
-    );
-    console.log("Loaded from localStorage:", storedImagesData);
+      localStorage.getItem("storedImageData"));
     storedImagesData.forEach((data) => {
       const div = document.createElement("div");
       div.className = "file-name";
-
       const img = document.createElement("img");
       img.src = data.src;
       img.className = "thumbnail";
       div.appendChild(img);
 
+      const span = document.createElement("span")
+      span.className = "comment-text"
+      span.textContent = data.comment;
+      div.appendChild(span);
       // Write rest of the code here
+
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "btn";
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", () => {
+        div.remove();
+        saveToLocalStorage();
+      })
+      div.appendChild(deleteButton);
+      fileList.appendChild(div);
     });
   }
+  loadFromLocalStorage();
 });
